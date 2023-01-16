@@ -23,7 +23,7 @@ app.get("/dogs", (req, res) => {
 
 // '/'
 app.get("/", (req, res) => {
-  res.send("<h1>This is the Home page.</h1>");
+  res.send("<h1>Welcome Home page!!!</h1>");
 });
 
 app.get("/r/:subreddit", (req, res) => {
@@ -34,6 +34,14 @@ app.get("/r/:subreddit", (req, res) => {
 app.get("/r/:subreddit/:comments", (req, res) => {
   const { subreddit, comments } = req.params;
   res.send(`<h1>Browsing the new  ${comments} of ${subreddit} subreddit </h1>`);
+});
+
+app.get("/search", (req, res) => {
+  const { q } = req.query;
+  if (!q) {
+    res.send("Nothing found if nothing searched");
+  }
+  res.send(`<h1>The coco is ${q}</h1>`);
 });
 
 app.get("*", (req, res) => {
