@@ -26,6 +26,16 @@ app.get("/", (req, res) => {
   res.send("<h1>This is the Home page.</h1>");
 });
 
+app.get("/r/:subreddit", (req, res) => {
+  const { subreddit } = req.params;
+  res.send(`<h1>Browsing the ${subreddit} subreddit </h1>`);
+});
+
+app.get("/r/:subreddit/:comments", (req, res) => {
+  const { subreddit, comments } = req.params;
+  res.send(`<h1>Browsing the new  ${comments} of ${subreddit} subreddit </h1>`);
+});
+
 app.get("*", (req, res) => {
   res.send(`I don't know this path`);
 });
